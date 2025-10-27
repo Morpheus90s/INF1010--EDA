@@ -1,0 +1,81 @@
+Relatório – Tabela Hash
+
+Nome: 
+Matrícula: 
+
+
+Objetivo
+
+O objetivo deste trabalho é implementar uma tabela de dispersão (hash table) em C
+para armazenar números de CPF. A tabela possui tamanho fixo e utiliza o
+método de endereçamento aberto com sondagem linear para tratar colisões.
+O programa deve contabilizar o número de colisões a cada 100 CPFs inseridos (até 1000 CPFs)
+e apresentar os resultados de forma clara.
+
+Estrutura do Programa
+
+O programa é composto pelos seguintes módulos e funções:
+
+hashFunction:
+Recebe um CPF e calcula o índice da tabela usando a operação módulo (x % TABLE_SIZE).
+
+insert:
+Insere o CPF na tabela hash, utilizando sondagem linear caso haja colisão.
+Retorna o número de tentativas até a inserção.
+
+removeNonNumericChars: 
+Remove caracteres não numéricos de uma string de CPF.
+
+convertToInteger:
+Converte a string do CPF em um número inteiro seguro,
+retornando -1 em caso de erro.
+
+main: Lê os CPFs do arquivo, chama insert para inserção e
+contabiliza as colisões a cada 100 CPFs.
+
+Solução
+
+Inicialização da Tabela:
+A tabela hash foi inicializada com 1201 posições.
+Todas as posições foram definidas como vazias (0).
+
+Leitura do Arquivo:
+O programa lê os CPFs do arquivo milcpfs.txt, remove caracteres não numéricos
+e valida se cada CPF possui 11 dígitos.
+
+Inserção e Contagem de Colisões:
+Cada CPF válido é convertido em inteiro e inserido na tabela.
+A cada inserção, o número de colisões é registrado.
+A cada 100 CPFs, o total de colisões é armazenado.
+
+Saída do Programa:
+Após a inserção, o programa imprime o número de colisões acumuladas
+para 100, 200, ..., 1000 CPFs.
+
+Exemplo de saída do programa:
+
+
+
+Observações e Conclusões
+
+Dificuldades: Garantir que a inserção tratasse corretamente colisões
+e que a conversão de CPF para inteiro fosse segura.
+
+Facilidades: O método de sondagem linear é direto de implementar
+e funcionou bem para distribuir os CPFs na tabela.
+
+Comportamento observado: O número de colisões aumenta à medida que
+mais CPFs são inseridos, devido ao aumento do fator de carga da tabela (α = n/m).
+
+Compilação do Programa:
+Para compilar:
+
+gcc -o tabela_hash tabela_hash.c
+
+
+Para executar:
+
+./tabela_hash
+
+Resultados dos Testes: O programa leu corretamente o arquivo de CPFs,
+inseriu os valores na tabela e contabilizou as colisões conforme esperado.
